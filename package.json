@@ -1,0 +1,27 @@
+{
+  "name": "mern-template",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "build:server": "tsc",
+    "dev:server": "ts-node-dev --inspect --respawn --transpileOnly -- app.ts",
+    "dev": "concurrently \"ts-node-dev --inspect --respawn --transpileOnly -- app.ts\" \"cd client && yarn start\"",
+    "build": "tsc && cd client && yarn && yarn run build",
+    "start": "node build/app.js"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.12",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.6",
+    "mongoose": "^5.9.9",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "ts-node-dev": "^1.0.0-pre.44"
+  }
+}
