@@ -11,7 +11,7 @@ This is a lightweight template of a "full-stack" node app that follows a simple 
 This is also a [TypeScript](https://www.typescriptlang.org/v2/) template because typing things is cool.
 
 ## What this template does
-It just renders a list of all User models stored in a table in mongodb. There's also a form to create a new User.
+It just renders a list of all Users stored in a table in mongodb. There's also a form to create a new User.
 
 ## How things work
 The app tries to route incoming requests to a router used by the _Express_ server, but has a "catch all" router that will route any "uncaught" requests to the _React_ app.
@@ -21,13 +21,19 @@ A good practice might be to define all routes used by the Express server to begi
 If a request is not handled by the Express server, the `index.html` of the React app's production build is served up instead.
 
 ## Getting started
+Run 
+```
+yarn
+```
+to install dependencies
+
 There are a couple scripts defined in the `package.json` that might be useful to take a look at.
 
 Since the server needs a production build of the React app to be available, you should probably run 
 ```
-yarn run build
+yarn run build:client
 ```
-after cloning this repo. This gets production builds ready for both the client and the server.
+after cloning this repo.
 
 The server also tries to connect to a mongodb server. If you're running in a `development` environment, it tries to connect over the default port. (`mongodb://localhost:27017` see [mongoose.ts](src/db/mongoose.ts))
 
