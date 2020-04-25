@@ -6,8 +6,9 @@
   "scripts": {
     "dev:server": "ts-node-dev --inspect --respawn --transpileOnly -- app.ts",
     "build:server": "tsc",
-    "dev": "concurrently \"ts-node-dev --inspect --respawn --transpileOnly -- app.ts\" \"cd client && yarn start\"",
-    "build": "tsc && cd client && yarn && yarn run build",
+    "build:client": "cd client && yarn && yarn run build",
+    "dev": "concurrently \"yarn run dev:server\" \"cd client && yarn start\"",
+    "build": "yarn run build:server && yarn run build:client",
     "start": "node build/app.js"
   },
   "dependencies": {
