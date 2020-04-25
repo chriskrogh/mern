@@ -23,7 +23,12 @@ function App() {
   }, [setUsers]);
 
   const createUser = async () => {
-    await makeRequest<UserData>(Method.POST, '/api/users', CREATE_USER, { name, email });
+    try {
+      const user = await makeRequest<User, UserData>(Method.POST, '/api/users', CREATE_USER, { name, email });
+      console.log('Created user:', user);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

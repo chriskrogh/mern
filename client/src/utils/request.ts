@@ -3,12 +3,12 @@ import { Method } from "types/network";
 
 const DEV_URL = 'http://localhost:5000';
 
-export const makeRequest = async <T>(
+export const makeRequest = async <R, D = {}>(
     method: Method,
     urlExt: string,
     errorMessage: string,
-    data?: T
-): Promise<T> => {
+    data?: D
+): Promise<R> => {
 
     var response = { data: {} };
     const url = getUrl(urlExt);
@@ -30,7 +30,7 @@ export const makeRequest = async <T>(
             default:
                 break;
         }
-        return response.data as T;
+        return response.data as R;
     } catch (error) {
         throw new Error(errorMessage);
     }
