@@ -1,8 +1,15 @@
 import axios from 'axios';
-import { DEV_URL } from 'common/network';
 import { Method } from "types/network";
 
-export const makeRequest = async <T>(method : Method, urlExt : string, errorMessage : string, data? : T) : Promise<T> => {
+const DEV_URL = 'http://localhost:5000';
+
+export const makeRequest = async <T>(
+    method: Method,
+    urlExt: string,
+    errorMessage: string,
+    data?: T
+): Promise<T> => {
+
     var response = { data: {} };
     const url = getUrl(urlExt);
 
@@ -29,8 +36,10 @@ export const makeRequest = async <T>(method : Method, urlExt : string, errorMess
     }
 }
 
-export const getUrl = (urlExt : string) => {
+export const getUrl = (urlExt: string) => {
     const { NODE_ENV, REACT_APP_PROD_URL } = process.env;
-    const baseUrl = (NODE_ENV === 'production') ? REACT_APP_PROD_URL : DEV_URL;
+    const baseUrl = (NODE_ENV === 'production' && REACT_APP_PROD_URL)
+        ? REACT_APP_PROD_URL
+        : DEV_URL;
     return baseUrl + urlExt;
 }

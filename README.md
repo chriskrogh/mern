@@ -1,39 +1,64 @@
-# MERN Template
+# mern
 Inspired by Dave Ceddia's [project](https://daveceddia.com/deploy-react-express-app-heroku/)
 
-This is a full-stack node app that follows a simple monalithic architecture.
+This is a lightweight template of a "full-stack" node app that follows a simple monalithic architecture. It's called mern because the tech stack is based on:
 
-## Development
-### Express Server
-**NOTE**<br/>
-If you're running the server for the first time, make sure and have a local mongodb server running and run `yarn run build` before starting the server. <br/>This will create the production build for the client and server. <br/>(The server will try to serve the production build of the client)
+- [**M**ongodb](https://www.mongodb.com/) for database stuff
+- [**E**xpress](http://expressjs.com/) for the back end
+- [**R**eact](https://reactjs.org/) for the front end 
+- [**N**ode](https://nodejs.org/en/) to make things work
 
-You can test the server locally by running `yarn run dev:server`
+This is also a [TypeScript](https://www.typescriptlang.org/v2/) template because typing things is cool.
 
-This will start only the server on port `5000` using: <br/>[ts-node-dev](https://www.npmjs.com/package/ts-node-dev) with the `--inspect` flag
+## What this template does
+It just renders a list of all User models stored in a table in mongodb. There's also a form to create a new User.
 
-### Notes about the server
+## How things work
+The app tries to route incoming requests to a router used by the _Express_ server, but has a "catch all" router that will route any "uncaught" requests to the _React_ app.
 
-1. When adding routes, make sure to prepend `/api` to the intended route.<br /><br />
-Eg. If you were to add a `{url}/users` route to the server, the endpoint should be `{url}/api/users`
+A good practice might be to define all routes used by the Express server to begin with `/api`. So any requests of the form `{root}/api` will be handled by the server.
 
-2. The server also serves up the production build of the React app using:<br/>
+If a request is not handled by the Express server, the `index.html` of the React app's production build is served up instead.
+
+## Getting started
+There are a couple scripts defined in the `package.json` that might be useful to take a look at.
+
+Since the server needs a production build of the React app to be available, you should probably run 
 ```
-res.sendFile(path.join(__dirname + '/client/build/index.html'));
+yarn run build
+```
+after cloning this repo. This gets production builds ready for both the client and the server.
+
+The server also tries to connect to a mongodb server. If you're running in a `development` environment, it tries to connect over the default port. (`mongodb://localhost:27017` see [mongoose.ts](src/db/mongoose.ts))
+
+### Server
+
+To run the server in `development` mode, run
+```
+yarn run dev:server
+```
+This will use a dev dependency `ts-node-dev` to run the server from it's TS source code files.
+
+But by default, Express is made to run JavaScript. (You'd want to run Express using JS source code in production). Since we're using TypeScript we need to transpile the TS to JS.
+
+To get this done, run 
+```
+yarn run build:server
 ```
 
-3. The server is written in `ts` but is transpiled to `js` for production. To run create the production build of the server (in js) **only**, run `yarn run build:server`
+This runs `tsc` using the options specified in the `tsconfig.json` and outputs the JS source code to the `build` directory.
 
-### React Client
+### Client 
+If you're working on the client, you probably wan't the server to be running as well. 
 
-If you're working on the client, most likely you'll need the server up and running as well. The command
-
-`yarn run dev`
-
-Will use [concurrently](https://www.npmjs.com/package/concurrently) to run both the server (on port `5000`) and the client (on port `3000`)<br/> You can then make changes to the client app and see the changes on `http://localhost:3000`
+Running
+```
+yarn run dev
+```
+starts both the client and the server in `development` mode.
 
 ## Production
-Wherever you plan on deploying this, it is a good idea to include `yarn run build` in your build pipeline. <br />This ensures that the production build for the client and server is ready.
-
-## More Info
-Take a look at the `scripts` in the `package.json` for more details.
+To run the production builds of both the client and the server, they both have to be available (`yarn run build`). Then you can run 
+```
+yarn start
+```

@@ -1,6 +1,6 @@
 import { ModelMetadata } from './model';
 
-type UserData = {
+export type UserData = {
     name: string,
     email: string
 };
