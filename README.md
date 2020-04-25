@@ -21,6 +21,12 @@ A good practice might be to define all routes used by the Express server to begi
 If a request is not handled by the Express server, the `index.html` of the React app's production build is served up instead.
 
 ## Getting started
+Run 
+```
+yarn
+```
+to install dependencies
+
 There are a couple scripts defined in the `package.json` that might be useful to take a look at.
 
 Since the server needs a production build of the React app to be available, you should probably run 
