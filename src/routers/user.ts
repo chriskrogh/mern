@@ -5,7 +5,7 @@ import '../db/mongoose';
 const router = express.Router();
 
 // create / sign up
-router.post('/api/users', async (req: Request, res: Response) => {
+router.post('/api/user', async (req: Request, res: Response) => {
   try {
     const user = new UserModel(req.body);
     await user.save();
@@ -17,7 +17,7 @@ router.post('/api/users', async (req: Request, res: Response) => {
 });
 
 // get everyone
-router.get('/api/users', async (req: Request, res: Response) => {
+router.get('/api/user', async (req: Request, res: Response) => {
   try {
     const users = await UserModel.find();
     if (!users) {

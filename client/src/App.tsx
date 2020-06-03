@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await makeRequest<User[]>(Method.GET, '/api/users', GET_USERS);
+        const data = await makeRequest<User[]>(Method.GET, '/api/user', GET_USERS);
         setUsers(data);
       } catch (error) {
         console.error(error);
@@ -24,7 +24,7 @@ function App() {
 
   const createUser = async () => {
     try {
-      const user = await makeRequest<User, UserData>(Method.POST, '/api/users', CREATE_USER, { name, email });
+      const user = await makeRequest<User, UserData>(Method.POST, '/api/user', CREATE_USER, { name, email });
       console.log('Created user:', user);
     } catch (error) {
       console.error(error);
