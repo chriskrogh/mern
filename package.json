@@ -4,6 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
+    "eslint": "eslint '**/*.{js,ts,tsx}' --fix",
     "dev:server": "ts-node-dev --inspect --respawn --transpileOnly -- app.ts",
     "build:server": "tsc",
     "build:client": "cd client && yarn && yarn run build",
@@ -22,7 +23,12 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.1.0",
+    "@typescript-eslint/parser": "^3.1.0",
     "concurrently": "^5.1.0",
+    "eslint": "^7.1.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "ts-node-dev": "^1.0.0-pre.44"
   }
 }

@@ -1,6 +1,6 @@
 export enum Method {
-    GET,
-    POST,
-    PATCH,
-    DELETE
-};
+  GET,
+  POST,
+  PATCH,
+  DELETE
+}
