@@ -7,7 +7,10 @@
     "build:shared": "yarn workspace @mern/shared build",
     "build:server": "yarn workspace @mern/server build",
     "build:client": "yarn workspace @mern/client build",
-    "build": "yarn build:shared && concurrently 'yarn build:server' 'yarn build:client'"
+    "build": "yarn build:shared && concurrently 'yarn build:server' 'yarn build:client'",
+    "dev:server": "yarn workspace @mern/server dev",
+    "dev:client": "yarn workspace @mern/client start",
+    "dev": "yarn build:shared && concurrently 'yarn dev:server' 'yarn dev:client'"
   },
   "workspaces": [
     "packages/*"
