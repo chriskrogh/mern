@@ -1,0 +1,35 @@
+{
+  "env": {
+    "es2020": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    // Not required. Typechecking prop-types through TypeScript
+    "react/prop-types": "off",
+    // Allow unused variables with names beginning with _
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "_.*" }
+    ],
+    "no-console": ["warn"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "name": "server",
+      "path": "./packages/server"
+    },
+    {
+      "name": "client",
+      "path": "./packages/client"
+    },
+    {
+      "name": "shared",
+      "path": "./packages/shared"
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "javascript.validate.enable": false,
+    "editor.formatOnSave": true
+  }
+}
