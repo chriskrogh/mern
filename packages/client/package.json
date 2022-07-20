@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@mern/shared": "1.0.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
